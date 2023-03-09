@@ -2,14 +2,14 @@
 	  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
 	  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
-      const firebaseConfig = {
-            apiKey: "AIzaSyDoMlriG5ch5Vursn-T1N8MOOtifZlT6LU",
-            authDomain: "designkoktail-f13c3.firebaseapp.com",
-            projectId: "designkoktail-f13c3",
-            storageBucket: "designkoktail-f13c3.appspot.com",
-            messagingSenderId: "237876784229",
-            appId: "1:237876784229:web:85cdaab127d61f2b0c6a8c"
-  };
+	  const firebaseConfig = {
+		apiKey: "AIzaSyAZfrzfaC55Rhz-DWlsNefV4OGWDSp4fzU",
+		authDomain: "dsa-prep-bc564.firebaseapp.com",
+		projectId: "dsa-prep-bc564",
+		storageBucket: "dsa-prep-bc564.appspot.com",
+		messagingSenderId: "27808377602",
+		appId: "1:27808377602:web:5762a8db431c863ca4301b"
+	  };
 
 	  // Initialize Firebase
 	  const app = initializeApp(firebaseConfig);
