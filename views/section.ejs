@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="section.css">
+    <link rel="stylesheet" href="progress450.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+    <h2 class="head">Below is the topic-wise distribution of 450 questions:</h2>
+    <br>
+    <%- include("progress450") -%>
+    <%  const questions = new Set(); %>
+    <% for(var i=0;i<data.length;i++){ %>
+      <%  questions.add(data[i].Topic); %>
+      <% } %>
+      <div class="container">
+      <% questions.forEach (function(value) { %>
+        <a href="/section/<%= value %>">
+        <div class="box">
+          <!-- <div class="card-inner"> -->
+        <h3><%= value %></h3>
+        <div class="container">
+          <!-- <h2> Progress Bar</h2>  -->
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated pbar" style="width:0%"> 0% </div>
+          </div>
+          </div>
+      <!-- </div> -->
+     </div>
+    </a>
+        <% }) %>
+      </div>
+</body>
+</html>

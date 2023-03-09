@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="date.css">
+</head>
+
+<body>
+    
+    <h1>Upcoming Coding Contests You Must Try!</h1>
+    
+    <div>
+    <div class="dcont">
+        <div class="card-container">
+            <div class="photo-container">
+                <div class="date">
+                    <div class="day">15</div>
+                    <div class="month">MAY</div>
+                </div>
+                <div class="image"></div>
+            </div>
+            <div class="info-container">
+                <div class="event-name">
+                    Pre-Mason Day
+                </div>
+                <div class="event-location">
+                    Early celebration in the Corner Pocket
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="photo-container">
+                <div class="date">
+                    <div class="day">16</div>
+                    <div class="month">MAY</div>
+                </div>
+                <div class="image"></div>
+            </div>
+            <div class="info-container">
+                <div class="event-name">
+                    Mason Day
+                </div>
+                <div class="event-location">
+                    See headlining artist: Soulja Boy
+                </div>
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="photo-container">
+                <div class="date">
+                    <div class="day">22</div>
+                    <div class="month">MAY</div>
+                </div>
+                <div class="image"></div>
+            </div>
+            <div class="info-container">
+                <div class="event-name">
+                    De-Stress Fest
+                </div>
+                <div class="event-location">
+                    De-stress before finals with puppies!
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+
+
+const secondsToHms = (d) => {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor((d % 3600) / 60);
+    var s = Math.floor((d % 3600) % 60);
+
+    var hDisplay = h > 0 ? h + (h === 1 ? "  hour, " : "  hours ") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes ") : "";
+    var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
+    return hDisplay + mDisplay + sDisplay;
+  };
+
+    fetch("https://kontests.net/api/v1/all")
+  .then((response) => response.json())
+  .then((contest_running) =>{
+   all_contests = contest_running;
+    let cct = document.querySelector(".dcont");
+    cct.innerHTML="" ;
+    for (item in contest_running) {
+      contest_going = contest_running[item];
+      console.log(contest_going);
+      if(Number(secondsToHms(contest_going.duration).slice(0,3))<=24){
+     cct.innerHTML += `
+      <div class="card-container">
+        <div class="photo-container">
+            <div class="date">
+                <div class="day">15</div>
+                <div class="month">September</div>
+            </div>
+            <div class="image"></div>
+        </div>
+        <div class="info-container">
+            <div class="event-name">
+                ${contest_going.name}
+                <p class="card-text">Contest Start Time:<br> ${contest_going.start_time.slice(
+                0,
+                10
+              )} | ${contest_going.start_time.slice(11, 19)}</p>
+              <p class="card-text">Contest End Time:<br> ${contest_going.end_time.slice(
+                0,
+                10
+              )} | ${contest_going.end_time.slice(11, 19)}</p>
+            </div>
+            <p> Duration : ${secondsToHms(contest_going.duration)}</p>
+            <a href="${
+                contest_going.url
+              }" class="btn btn-primary m-auto">Visit Contest Website</a>
+            </div>
+         </div>
+      </div>`
+    }
+    }
+    // return contest_running;
+});
+</script>
+</html>

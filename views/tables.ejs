@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>Questions on <span><%= data[0].Topic %></span></h1>
+    <div class="container">
+        <!-- <h2> Progress Bar</h2>  -->
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated pbar" style="width:0%"> 0% </div>
+        </div>
+        </div>
+
+    <table class="responstable">
+
+        <tr>
+            <th width="10%">Sl.No</th>
+            <th width="2%" class="done">Done</th>
+            <th data-th=" Driver details " width="40%"><span>Problem</span></th>
+            <th width="10%">Video Solution</th>
+            <th width="10%">Notes</th>
+        </tr>
+        <% let len=data.length; for(var i=0;i<data.length;i++){ %>
+
+            <tr>
+                <td><%= (i+1) %></td>
+                <td><input name="question" type="checkbox" /></td>
+                <td><a href="<%= data[i].URL %>" target="_blank"><%= data[i].Problem %></a></td>
+                <td><a href="">C++</a>/<a href="">Java</a></td>
+                <td><a href="">Algo</a>/<a href="">Code</a></td>
+            </tr>
+
+            <% } %>
+
+
+    </table>
+</body>
+<script>
+      var ele = document.getElementsByName("question");
+    function showTime() {
+    var count  = 0;
+    for (var i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+            count++;
+        }
+    }
+    let per = Math.round((count/(ele.length))*100);
+    console.log(per+"%");
+    let pbar = document.querySelector(".pbar");
+    pbar.style.width = `${per}%`;
+    pbar.innerHTML = `${per}%`;
+}
+for (var i = 0; i < ele.length; i++) {
+    ele[i].addEventListener("click",()=>{
+        showTime();
+    });
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>
